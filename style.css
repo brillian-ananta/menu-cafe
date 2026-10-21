@@ -1521,3 +1521,63 @@ section[id] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Label Best Seller */
+.best-seller-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 3;
+  padding: 6px 10px;
+  border-radius: 30px;
+  background: #fff4d8;
+  color: #805817;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Tombol Favorit */
+.favorite-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 4;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  color: #c54b4b;
+  font-size: 23px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.favorite-button:hover {
+  transform: scale(1.1);
+  background: #fff0ee;
+}
+
+.favorite-button[aria-pressed="true"] {
+  color: #d92f45;
+}
+
+/* Foto yang tidak tersedia */
+.image-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 16px;
+  background: #eeeadf;
+  color: #183d32;
+  font-size: 12px;
+  text-align: center;
+}
+
+.dialog-image.image-placeholder {
+  width: 100%;
+  height: 260px;
+}
+
