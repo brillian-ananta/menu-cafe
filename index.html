@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <!-- Pengaturan dasar halaman website -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Informasi website untuk browser dan mesin pencari -->
+    <meta
+        name="description"
+        content="SmartMenu - Menu digital cafe yang praktis, ringan, dan mudah diakses."
+    >
+    <meta name="theme-color" content="#18392b">
+
+    <!-- Judul yang muncul pada tab browser -->
+    <title>SmartMenu | Menu Digital Cafe</title>
+
+    <!-- Menghubungkan file CSS untuk mengatur tampilan website -->
+    <link rel="stylesheet" href="style.css">
+
+    <!--
+        Menghubungkan file JavaScript.
+        Atribut defer membuat JavaScript dijalankan setelah HTML selesai dibaca.
+    -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==========================================
+         1. HEADER: IDENTITAS DAN NAVIGASI WEBSITE
+         ========================================== -->
+    <header class="site-header">
+        <div class="container header-content">
+
+            <!-- Nama dan identitas cafe -->
+            <a href="#beranda" class="brand" aria-label="SmartMenu, kembali ke beranda">
+                <span class="brand-icon" aria-hidden="true">S</span>
+
+                <span class="brand-text">
+                    <span class="brand-name">SmartMenu</span>
+                    <span class="brand-tagline">Digital Cafe Menu</span>
+                </span>
+            </a>
+
+            <!-- Navigasi utama website -->
+            <nav class="main-nav" aria-label="Navigasi utama">
+                <a href="#beranda">Beranda</a>
+                <a href="#menu">Menu</a>
+                <a href="#tentang">Tentang Kami</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ==========================================
+             2. HERO: BAGIAN PEMBUKA WEBSITE
+             ========================================== -->
+        <section class="hero" id="beranda">
+            <div class="container hero-content">
+
+                <!-- Label kecil di atas judul -->
+                <p class="hero-label">
+                    SELAMAT DATANG DI CAFE KAMI
+                </p>
+
+                <!-- Judul utama website -->
+                <h1>
+                    Temukan Menu Favoritmu
+                </h1>
+
+                <!-- Penjelasan singkat website -->
+                <p class="hero-description">
+                    Nikmati pengalaman melihat menu yang praktis.
+                    Temukan makanan dan minuman favoritmu dengan mudah
+                    melalui SmartMenu.
+                </p>
+
+                <!-- Tombol untuk menuju bagian menu -->
+                <a href="#menu" class="button button-primary">
+                    Lihat Menu
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             3. BAGIAN MENU DIGITAL
+             ========================================== -->
+        <section class="menu-section" id="menu">
+            <div class="container">
+
+                <!-- Judul dan deskripsi bagian menu -->
+                <div class="section-heading">
+                    <p class="section-label">PILIHAN TERBAIK</p>
+
+                    <h2>Daftar Menu</h2>
+
+                    <p>
+                        Pilih makanan atau minuman sesuai seleramu.
+                    </p>
+                </div>
+
+
+                <!-- ======================================
+                     4. PENCARIAN MENU
+                     ====================================== -->
+                <div class="menu-search">
+
+                    <!-- Label membantu pengguna dan pembaca layar -->
+                    <label for="searchInput" class="visually-hidden">
+                        Cari nama makanan atau minuman
+                    </label>
+
+                    <!--
+                        JavaScript menggunakan ID searchInput
+                        untuk membaca kata yang dimasukkan pengguna.
+                    -->
+                    <input
+                        type="search"
+                        id="searchInput"
+                        class="search-input"
+                        placeholder="Cari makanan atau minuman..."
+                        autocomplete="off"
+                    >
+
+                    <!-- Tombol menghapus kata pencarian -->
+                    <button
+                        type="button"
+                        id="clearSearch"
+                        class="button button-secondary"
+                        aria-label="Hapus pencarian"
+                    >
+                        Hapus
+                    </button>
+
+                </div>
+
+
+                <!-- ======================================
+                     5. FILTER KATEGORI MENU
+                     ====================================== -->
+                <div class="category-section">
+
+                    <h3 class="category-title">
+                        Kategori Menu
+                    </h3>
+
+                    <!--
+                        Setiap tombol memiliki data-category.
+                        JavaScript membaca nilainya untuk menyaring menu.
+                    -->
+                    <div
+                        class="category-list"
+                        id="categoryList"
+                        role="group"
+                        aria-label="Filter kategori menu"
+                    >
+                        <button
+                            type="button"
+                            class="category-button active"
+                            data-category="Semua"
+                            aria-pressed="true"
+                        >
+                            Semua
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Makanan"
+                            aria-pressed="false"
+                        >
+                            Makanan
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Camilan"
+                            aria-pressed="false"
+                        >
+                            Camilan
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Minuman"
+                            aria-pressed="false"
+                        >
+                            Minuman
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Kopi"
+                            aria-pressed="false"
+                        >
+                            Kopi
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- ======================================
+                     6. INFORMASI JUMLAH MENU
+                     ====================================== -->
+
+                <!--
+                    JavaScript dapat memperbarui teks ini
+                    sesuai jumlah menu yang sedang ditampilkan.
+                -->
+                <p
+                    class="result-count"
+                    id="resultCount"
+                    aria-live="polite"
+                >
+                    Daftar menu
+                </p>
+
+
+                <!-- ======================================
+                     7. DAFTAR KARTU MENU
+                     ====================================== -->
+
+                <!--
+                    Kartu makanan dan minuman dibuat oleh JavaScript
+                    berdasarkan data dalam file script.js.
+                    Tidak perlu menulis kartu satu per satu di HTML.
+                -->
+                <div
+                    class="menu-grid"
+                    id="menuContainer"
+                    aria-label="Daftar makanan dan minuman"
+                >
+                    <!-- Kartu menu akan dimasukkan di sini -->
+                </div>
+
+
+                <!-- ======================================
+                     8. PESAN JIKA MENU TIDAK DITEMUKAN
+                     ====================================== -->
+
+                <!--
+                    JavaScript menampilkan bagian ini ketika
+                    hasil pencarian atau filter kosong.
+                -->
+                <div
+                    class="empty-state"
+                    id="emptyState"
+                    hidden
+                >
+                    <h3>Menu tidak ditemukan</h3>
+
+                    <p>
+                        Coba gunakan kata kunci lain atau pilih
+                        kategori menu yang berbeda.
+                    </p>
+                </div>
+
+
+                <!-- Pesan jika JavaScript tidak aktif -->
+                <noscript>
+                    <p class="notice">
+                        Untuk menampilkan daftar menu, aktifkan
+                        JavaScript pada browser Anda.
+                    </p>
+                </noscript>
+
+            </div>
+        </section>
+
+
+        <!-- ==========================================
+             9. DIALOG DETAIL MENU
+             ========================================== -->
+
+        <!--
+            Elemen dialog digunakan untuk menampilkan
+            informasi menu secara lebih lengkap.
+            JavaScript akan mengisi gambar, nama, harga,
+            dan deskripsi sesuai menu yang dipilih.
+        -->
+        <dialog
+            class="menu-dialog"
+            id="menuDialog"
+            aria-labelledby="dialogTitle"
+        >
+            <div class="dialog-content">
+
+                <!-- Tombol untuk menutup jendela detail -->
+                <button
+                    type="button"
+                    class="dialog-close"
+                    id="closeDialog"
+                    aria-label="Tutup detail menu"
+                >
+                    &times;
+                </button>
+
+                <!-- Gambar menu yang dipilih -->
+                <img
+                    src=""
+                    alt=""
+                    class="dialog-image"
+                    id="dialogImage"
+                >
+
+                <!-- Informasi menu -->
+                <div class="dialog-info">
+
+                    <p
+                        class="dialog-category"
+                        id="dialogCategory"
+                    ></p>
+
+                    <h2 id="dialogTitle">
+                        Detail Menu
+                    </h2>
+
+                    <p
+                        class="dialog-price"
+                        id="dialogPrice"
+                    ></p>
+
+                    <p
+                        class="dialog-description"
+                        id="dialogDescription"
+                    ></p>
+
+                    <!-- Status ketersediaan menu -->
+                    <p
+                        class="dialog-availability"
+                        id="dialogAvailability"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+            </div>
+        </dialog>
+
+    </main>
+
+
+    <!-- ==========================================
+         10. BAGIAN TENTANG KAMI
+         ========================================== -->
+    <section class="about-section" id="tentang">
+        <div class="container about-content">
+
+            <p class="section-label">TENTANG KAMI</p>
+
+            <h2>Menu Praktis, Pengalaman Lebih Baik</h2>
+
+            <p>
+                SmartMenu adalah konsep menu digital yang memudahkan
+                pelanggan melihat makanan dan minuman melalui perangkat
+                mereka tanpa harus menggunakan buku menu fisik.
+            </p>
+
+            <p>
+                Website dirancang agar ringan, mudah digunakan,
+                dan dapat menyesuaikan tampilan pada HP maupun laptop.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ==========================================
+         11. FOOTER: INFORMASI PENUTUP
+         ========================================== -->
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <!-- Identitas website -->
+            <p class="footer-brand">
+                <strong>SmartMenu</strong>
+            </p>
+
+            <!-- Informasi hak cipta -->
+            <p class="copyright">
+                &copy; <span id="currentYear">2026</span>
+                SmartMenu. Hak cipta dilindungi.
+            </p>
+
+            <!-- Keterangan teknologi -->
+            <p class="footer-note">
+                Menu digital sederhana untuk pengalaman yang praktis.
+            </p>
+
+        </div>
+    </footer>
+
+</body>
+</html>
