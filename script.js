@@ -1,569 +1,564 @@
 
-"use strict";
+/* ==========================================
+   SMARTMENU - DIGITAL CAFE MENU
+   HTML + CSS + JavaScript
+   Tanpa database / backend
+========================================== */
 
-/* =========================================
-   1. DATA MENU SMARTMENU
-   ========================================= */
+/* 1. DATA MENU
+   Ganti nama, harga, deskripsi, dan gambar
+   sesuai menu kafe yang sebenarnya.
 
-/*
-  Semua data menu disimpan dalam array JavaScript.
-  Tidak membutuhkan database atau backend.
-
-  Cara menambah menu:
-  - Salin salah satu objek menu.
-  - Ganti id, nama, kategori, harga, deskripsi, dan gambar.
-  - Gunakan id yang berbeda untuk setiap menu.
-  - Pastikan kategori sesuai dengan tombol filter di HTML.
-  - Pastikan nama file gambar sesuai dengan folder images.
+   Gambar lokal disimpan di folder images/.
 */
 
 const menu = [
-    {
-        id: 1,
-        name: "Nasi Goreng Spesial",
-        category: "Makanan",
-        price: 25000,
-        description: "Nasi goreng dengan telur, sayuran, dan bumbu khas cafe.",
-        image: "images/nasi-goreng.jpg",
-        available: true
-    },
-    {
-        id: 2,
-        name: "Chicken Katsu",
-        category: "Makanan",
-        price: 28000,
-        description: "Ayam katsu renyah dengan saus spesial dan nasi hangat.",
-        image: "images/chicken-katsu.jpg",
-        available: true
-    },
-    {
-        id: 3,
-        name: "Mie Goreng",
-        category: "Makanan",
-        price: 20000,
-        description: "Mie goreng dengan sayuran dan bumbu gurih.",
-        image: "images/mie-goreng.jpg",
-        available: true
-    },
-    {
-        id: 4,
-        name: "Kentang Goreng",
-        category: "Camilan",
-        price: 15000,
-        description: "Kentang goreng renyah yang cocok untuk teman nongkrong.",
-        image: "images/kentang-goreng.jpg",
-        available: true
-    },
-    {
-        id: 5,
-        name: "Roti Bakar Cokelat",
-        category: "Camilan",
-        price: 16000,
-        description: "Roti bakar dengan isian cokelat manis.",
-        image: "images/roti-bakar.jpg",
-        available: false
-    },
-    {
-        id: 6,
-        name: "Es Teh Manis",
-        category: "Minuman",
-        price: 8000,
-        description: "Teh manis dingin yang menyegarkan.",
-        image: "images/es-teh.jpg",
-        available: true
-    },
-    {
-        id: 7,
-        name: "Matcha Latte",
-        category: "Minuman",
-        price: 22000,
-        description: "Minuman matcha dengan susu yang lembut.",
-        image: "images/matcha-latte.jpg",
-        available: true
-    },
-    {
-        id: 8,
-        name: "Es Kopi Susu",
-        category: "Kopi",
-        price: 18000,
-        description: "Perpaduan kopi, susu, dan gula aren.",
-        image: "images/es-kopi-susu.jpg",
-        available: true
-    },
-    {
-        id: 9,
-        name: "Americano",
-        category: "Kopi",
-        price: 15000,
-        description: "Kopi dengan rasa khas yang disajikan dingin atau panas.",
-        image: "images/americano.jpg",
-        available: true
-    },
-    {
-        id: 10,
-        name: "Cappuccino",
-        category: "Kopi",
-        price: 20000,
-        description: "Espresso dengan susu dan lapisan busa lembut.",
-        image: "images/cappuccino.jpg",
-        available: false
-    }
+  {
+    id: 1,
+    name: "Nasi Goreng Spesial",
+    category: "Makanan",
+    price: 25000,
+    description: "Nasi goreng gurih dengan telur, sayuran, dan pelengkap pilihan.",
+    image: "images/nasi-goreng.jpg",
+    available: true,
+    bestSeller: true
+  },
+  {
+    id: 2,
+    name: "Chicken Katsu",
+    category: "Makanan",
+    price: 28000,
+    description: "Ayam renyah dengan nasi hangat dan saus spesial.",
+    image: "images/chicken-katsu.jpg",
+    available: true,
+    bestSeller: true
+  },
+  {
+    id: 3,
+    name: "Mie Goreng",
+    category: "Makanan",
+    price: 22000,
+    description: "Mie goreng dengan bumbu pilihan dan sayuran segar.",
+    image: "images/mie-goreng.jpg",
+    available: true,
+    bestSeller: false
+  },
+  {
+    id: 4,
+    name: "Kentang Goreng",
+    category: "Camilan",
+    price: 15000,
+    description: "Kentang goreng renyah yang cocok untuk teman santai.",
+    image: "images/kentang-goreng.jpg",
+    available: true,
+    bestSeller: true
+  },
+  {
+    id: 5,
+    name: "Roti Bakar Cokelat",
+    category: "Camilan",
+    price: 18000,
+    description: "Roti panggang hangat dengan isian cokelat manis.",
+    image: "images/roti-bakar.jpg",
+    available: true,
+    bestSeller: false
+  },
+  {
+    id: 6,
+    name: "Es Teh Manis",
+    category: "Minuman",
+    price: 8000,
+    description: "Teh manis dingin yang menyegarkan.",
+    image: "images/es-teh.jpg",
+    available: true,
+    bestSeller: false
+  },
+  {
+    id: 7,
+    name: "Matcha Latte",
+    category: "Minuman",
+    price: 22000,
+    description: "Perpaduan matcha dan susu dengan rasa lembut.",
+    image: "images/matcha-latte.jpg",
+    available: true,
+    bestSeller: true
+  },
+  {
+    id: 8,
+    name: "Es Kopi Susu",
+    category: "Kopi",
+    price: 18000,
+    description: "Kopi, susu, dan es dengan rasa seimbang.",
+    image: "images/es-kopi-susu.jpg",
+    available: true,
+    bestSeller: true
+  },
+  {
+    id: 9,
+    name: "Americano",
+    category: "Kopi",
+    price: 16000,
+    description: "Espresso dengan air, cocok untuk pecinta kopi klasik.",
+    image: "images/americano.jpg",
+    available: true,
+    bestSeller: false
+  },
+  {
+    id: 10,
+    name: "Cappuccino",
+    category: "Kopi",
+    price: 20000,
+    description: "Espresso dengan susu dan busa susu lembut.",
+    image: "images/cappuccino.jpg",
+    available: true,
+    bestSeller: false
+  }
 ];
 
 
-/* =========================================
-   2. MENGAMBIL ELEMEN DARI HTML
-   ========================================= */
-
-/*
-  JavaScript menggunakan ID berikut untuk
-  mengakses bagian-bagian yang ada di index.html.
-*/
+/* 2. AMBIL ELEMEN HTML */
 
 const menuContainer = document.getElementById("menuContainer");
 const searchInput = document.getElementById("searchInput");
-const clearSearchButton = document.getElementById("clearSearch");
+const clearSearch = document.getElementById("clearSearch");
 const categoryList = document.getElementById("categoryList");
 const resultCount = document.getElementById("resultCount");
 const emptyState = document.getElementById("emptyState");
 
-// Elemen untuk jendela detail menu
 const menuDialog = document.getElementById("menuDialog");
-const closeDialogButton = document.getElementById("closeDialog");
 const dialogImage = document.getElementById("dialogImage");
 const dialogCategory = document.getElementById("dialogCategory");
 const dialogTitle = document.getElementById("dialogTitle");
 const dialogPrice = document.getElementById("dialogPrice");
 const dialogDescription = document.getElementById("dialogDescription");
 const dialogAvailability = document.getElementById("dialogAvailability");
+const closeDialog = document.getElementById("closeDialog");
 
-// Elemen tahun pada footer
 const currentYear = document.getElementById("currentYear");
 
 
-/* =========================================
-   3. VARIABEL FILTER
-   ========================================= */
-
-/*
-  selectedCategory menyimpan kategori yang dipilih.
-  searchKeyword menyimpan kata pencarian pengguna.
-
-  Nilai awal:
-  - Kategori: Semua
-  - Pencarian: kosong
-*/
+/* 3. STATE */
 
 let selectedCategory = "Semua";
 let searchKeyword = "";
+let activeMenuId = null;
+
+const FAVORITES_KEY = "smartmenu-favorites-v1";
+
+let favoriteIds = loadFavorites();
 
 
-/* =========================================
-   4. FORMAT HARGA RUPIAH
-   ========================================= */
+/* 4. FORMAT HARGA */
 
-/*
-  Mengubah angka, misalnya 18000,
-  menjadi format Rp18.000.
-*/
-
-const rupiahFormatter = new Intl.NumberFormat("id-ID", {
-    style: "currency",
-    currency: "IDR",
-    maximumFractionDigits: 0
+const rupiah = new Intl.NumberFormat("id-ID", {
+  style: "currency",
+  currency: "IDR",
+  maximumFractionDigits: 0
 });
 
-function formatRupiah(harga) {
-    return rupiahFormatter.format(harga);
+function formatPrice(price) {
+  return rupiah.format(price);
 }
 
 
-/* =========================================
-   5. MEMBUAT ELEMEN HTML DENGAN AMAN
-   ========================================= */
-
-/*
-  Fungsi ini membuat elemen HTML dan mengisi
-  teksnya melalui textContent.
-
-  Cara ini menghindari memasukkan teks data menu
-  langsung sebagai kode HTML.
-*/
+/* 5. HELPER DOM YANG AMAN */
 
 function createElement(tag, className, text = "") {
-    const element = document.createElement(tag);
+  const element = document.createElement(tag);
 
-    if (className) {
-        element.className = className;
-    }
+  if (className) {
+    element.className = className;
+  }
 
-    if (text !== "") {
-        element.textContent = text;
-    }
+  if (text !== "") {
+    element.textContent = text;
+  }
 
-    return element;
+  return element;
 }
 
 
-/* =========================================
-   6. MENAMPILKAN GAMBAR MENU
-   ========================================= */
+/* 6. FAVORIT DISIMPAN DI BROWSER */
 
-/*
-  Foto disimpan secara lokal di folder images.
-  Jika file foto tidak ditemukan, tampilkan pesan
-  alternatif agar gambar rusak tidak terus muncul.
-*/
+function loadFavorites() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(FAVORITES_KEY) || "[]"
+    );
+
+    if (!Array.isArray(saved)) {
+      return [];
+    }
+
+    return saved.filter(
+      id => Number.isInteger(id) &&
+      menu.some(item => item.id === id)
+    );
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem(
+      FAVORITES_KEY,
+      JSON.stringify(favoriteIds)
+    );
+  } catch (error) {
+    console.warn("Favorit tidak dapat disimpan di browser.");
+  }
+}
+
+function isFavorite(menuId) {
+  return favoriteIds.includes(menuId);
+}
+
+function toggleFavorite(menuId) {
+  if (isFavorite(menuId)) {
+    favoriteIds = favoriteIds.filter(id => id !== menuId);
+  } else {
+    favoriteIds.push(menuId);
+  }
+
+  saveFavorites();
+  renderMenu();
+}
+
+
+/* 7. MEMUAT FOTO MENU */
 
 function setMenuImage(imageElement, menuItem) {
-    imageElement.alt = "Foto " + menuItem.name;
-    imageElement.src = menuItem.image;
+  imageElement.alt = menuItem.name;
+  imageElement.loading = "lazy";
 
-    imageElement.addEventListener("error", function () {
-        // Hapus sumber gambar yang gagal dimuat.
-        imageElement.removeAttribute("src");
+  imageElement.addEventListener("error", function handleImageError() {
+    const placeholder = createElement(
+      "div",
+      "image-placeholder",
+      "Foto belum tersedia"
+    );
 
-        // Beri informasi bahwa foto belum tersedia.
-        imageElement.alt = "Foto " + menuItem.name + " belum tersedia";
-        imageElement.classList.add("image-placeholder");
-    }, { once: true });
+    placeholder.setAttribute("role", "img");
+    placeholder.setAttribute(
+      "aria-label",
+      "Foto " + menuItem.name + " belum tersedia"
+    );
+
+    imageElement.replaceWith(placeholder);
+  }, { once: true });
+
+  imageElement.src = menuItem.image;
 }
 
 
-/* =========================================
-   7. MEMBUAT KARTU MENU
-   ========================================= */
-
-/*
-  Fungsi ini membuat satu kartu untuk setiap produk.
-
-  Isi kartu:
-  - Foto menu
-  - Nama produk
-  - Kategori
-  - Deskripsi
-  - Harga
-  - Status ketersediaan
-  - Tombol detail
-*/
+/* 8. MEMBUAT KARTU MENU */
 
 function createMenuCard(menuItem) {
-    // Pembungkus kartu.
-    const card = createElement("article", "menu-card");
+  const card = createElement("article", "menu-card");
 
-    // Area gambar.
-    const imageWrapper = createElement(
-        "div",
-        "menu-image-wrapper"
+  if (!menuItem.available) {
+    card.classList.add("is-unavailable");
+  }
+
+  // Bagian gambar
+  const imageWrapper = createElement("div", "menu-image-wrapper");
+
+  const image = createElement("img", "menu-image");
+  setMenuImage(image, menuItem);
+
+  imageWrapper.appendChild(image);
+
+  const categoryBadge = createElement(
+    "span",
+    "menu-category",
+    menuItem.category
+  );
+
+  imageWrapper.appendChild(categoryBadge);
+
+  // Label best seller
+  if (menuItem.bestSeller) {
+    const bestSellerBadge = createElement(
+      "span",
+      "best-seller-badge",
+      "★ Best Seller"
     );
 
-    const image = createElement("img", "menu-image");
+    imageWrapper.appendChild(bestSellerBadge);
+  }
 
-    // Memuat foto produk.
-    setMenuImage(image, menuItem);
+  // Tombol favorit
+  const favoriteButton = createElement(
+    "button",
+    "favorite-button",
+    isFavorite(menuItem.id) ? "♥" : "♡"
+  );
 
-    imageWrapper.appendChild(image);
+  favoriteButton.type = "button";
+  favoriteButton.setAttribute(
+    "aria-label",
+    isFavorite(menuItem.id)
+      ? "Hapus " + menuItem.name + " dari favorit"
+      : "Tambahkan " + menuItem.name + " ke favorit"
+  );
 
-    // Tambahkan label jika menu habis.
-    if (!menuItem.available) {
-        card.classList.add("is-unavailable");
+  favoriteButton.setAttribute(
+    "aria-pressed",
+    String(isFavorite(menuItem.id))
+  );
 
-        const badge = createElement(
-            "span",
-            "menu-badge-unavailable",
-            "Habis"
-        );
+  favoriteButton.addEventListener("click", function () {
+    toggleFavorite(menuItem.id);
+  });
 
-        imageWrapper.appendChild(badge);
-    }
+  imageWrapper.appendChild(favoriteButton);
+  card.appendChild(imageWrapper);
 
-    // Area isi kartu.
-    const content = createElement(
-        "div",
-        "menu-card-content"
+  // Bagian isi kartu
+  const content = createElement("div", "menu-card-content");
+
+  const name = createElement("h3", "menu-name", menuItem.name);
+  content.appendChild(name);
+
+  const description = createElement(
+    "p",
+    "menu-description",
+    menuItem.description
+  );
+
+  content.appendChild(description);
+
+  if (!menuItem.available) {
+    const unavailableBadge = createElement(
+      "span",
+      "menu-badge-unavailable",
+      "Stok habis"
     );
 
-    const category = createElement(
-        "span",
-        "menu-category",
-        menuItem.category
-    );
+    content.appendChild(unavailableBadge);
+  }
 
-    const name = createElement(
-        "h3",
-        "menu-name",
-        menuItem.name
-    );
+  const price = createElement(
+    "p",
+    "menu-price",
+    formatPrice(menuItem.price)
+  );
 
-    const description = createElement(
-        "p",
-        "menu-description",
-        menuItem.description
-    );
+  content.appendChild(price);
 
-    const price = createElement(
-        "p",
-        "menu-price",
-        formatRupiah(menuItem.price)
-    );
+  const detailButton = createElement(
+    "button",
+    "menu-detail-button",
+    "Lihat Detail →"
+  );
 
-    // Tombol membuka detail menu.
-    const detailButton = createElement(
-        "button",
-        "menu-detail-button",
-        "Lihat Detail"
-    );
+  detailButton.type = "button";
+  detailButton.addEventListener("click", function () {
+    openMenuDetail(menuItem);
+  });
 
-    detailButton.type = "button";
+  content.appendChild(detailButton);
+  card.appendChild(content);
 
-    detailButton.addEventListener("click", function () {
-        openMenuDetail(menuItem);
-    });
-
-    // Susun seluruh isi kartu.
-    content.append(
-        category,
-        name,
-        description,
-        price,
-        detailButton
-    );
-
-    card.append(imageWrapper, content);
-
-    return card;
+  return card;
 }
 
 
-/* =========================================
-   8. MENYARING DATA MENU
-   ========================================= */
-
-/*
-  Menu ditampilkan sesuai dua kondisi:
-  1. Kategori yang dipilih.
-  2. Kata pencarian yang dimasukkan.
-
-  Pencarian memeriksa nama, kategori,
-  dan deskripsi menu.
-*/
+/* 9. FILTER DAN PENCARIAN */
 
 function getFilteredMenus() {
-    return menu.filter(function (menuItem) {
-        const matchesCategory =
-            selectedCategory === "Semua" ||
-            menuItem.category === selectedCategory;
+  const keyword = searchKeyword.trim().toLocaleLowerCase("id-ID");
 
-        const searchableText = [
-            menuItem.name,
-            menuItem.category,
-            menuItem.description
-        ].join(" ").toLocaleLowerCase("id-ID");
+  return menu.filter(function (item) {
+    const matchesCategory =
+      selectedCategory === "Semua" ||
+      item.category === selectedCategory;
 
-        const matchesSearch =
-            searchableText.includes(searchKeyword);
+    const searchableText = [
+      item.name,
+      item.category,
+      item.description
+    ].join(" ").toLocaleLowerCase("id-ID");
 
-        return matchesCategory && matchesSearch;
-    });
+    const matchesSearch = searchableText.includes(keyword);
+
+    return matchesCategory && matchesSearch;
+  });
 }
 
 
-/* =========================================
-   9. MENAMPILKAN SEMUA KARTU MENU
-   ========================================= */
-
-/*
-  Fungsi utama untuk memperbarui daftar menu.
-
-  Fungsi ini dipanggil saat:
-  - Website pertama kali dibuka.
-  - Pengguna mengetik pencarian.
-  - Pengguna memilih kategori.
-*/
+/* 10. RENDER DAFTAR MENU */
 
 function renderMenu() {
-    // Ambil data yang sesuai dengan filter.
-    const filteredMenus = getFilteredMenus();
+  if (!menuContainer) return;
 
-    // Kosongkan daftar kartu sebelumnya.
-    menuContainer.replaceChildren();
+  const filteredMenus = getFilteredMenus();
 
-    // Buat kartu untuk setiap menu yang cocok.
-    filteredMenus.forEach(function (menuItem) {
-        const card = createMenuCard(menuItem);
+  menuContainer.replaceChildren();
 
-        menuContainer.appendChild(card);
-    });
+  filteredMenus.forEach(function (item) {
+    menuContainer.appendChild(createMenuCard(item));
+  });
 
-    // Perbarui informasi jumlah hasil.
+  if (resultCount) {
     resultCount.textContent =
-        "Menampilkan " + filteredMenus.length +
-        " dari " + menu.length + " menu";
+      "Menampilkan " + filteredMenus.length +
+      " dari " + menu.length + " menu";
+  }
 
-    // Tampilkan pesan jika tidak ada hasil.
-    emptyState.hidden = filteredMenus.length !== 0;
+  if (emptyState) {
+    emptyState.hidden = filteredMenus.length > 0;
+  }
 }
 
 
-/* =========================================
-   10. FITUR PENCARIAN MENU
-   ========================================= */
+/* 11. EVENT PENCARIAN */
 
-/*
-  Setiap kali pengguna mengetik,
-  kata pencarian diperbarui dan menu dirender ulang.
-*/
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    searchKeyword = searchInput.value;
+    renderMenu();
+  });
+}
 
-searchInput.addEventListener("input", function () {
-    searchKeyword = searchInput.value
-        .trim()
-        .toLocaleLowerCase("id-ID");
+if (clearSearch) {
+  clearSearch.addEventListener("click", function () {
+    if (searchInput) {
+      searchInput.value = "";
+      searchKeyword = "";
+      searchInput.focus();
+    }
 
     renderMenu();
-});
+  });
+}
 
 
-/* =========================================
-   11. TOMBOL HAPUS PENCARIAN
-   ========================================= */
+/* 12. EVENT FILTER KATEGORI */
 
-/*
-  Menghapus teks pencarian dan menampilkan
-  kembali menu berdasarkan kategori terpilih.
-*/
-
-clearSearchButton.addEventListener("click", function () {
-    searchInput.value = "";
-    searchKeyword = "";
-
-    renderMenu();
-
-    searchInput.focus();
-});
-
-
-/* =========================================
-   12. FILTER KATEGORI
-   ========================================= */
-
-/*
-  Ketika tombol kategori diklik:
-  - Simpan kategori yang dipilih.
-  - Perbarui tampilan aktif tombol.
-  - Perbarui atribut aksesibilitas.
-  - Tampilkan menu yang sesuai.
-*/
-
-categoryList.addEventListener("click", function (event) {
+if (categoryList) {
+  categoryList.addEventListener("click", function (event) {
     const button = event.target.closest("[data-category]");
 
-    // Abaikan klik yang bukan tombol kategori.
     if (!button || !categoryList.contains(button)) {
-        return;
+      return;
     }
 
-    selectedCategory = button.dataset.category;
+    selectedCategory = button.dataset.category || "Semua";
 
-    // Perbarui status tombol kategori.
-    const categoryButtons =
-        categoryList.querySelectorAll("[data-category]");
-
-    categoryButtons.forEach(function (categoryButton) {
+    categoryList.querySelectorAll("[data-category]").forEach(
+      function (categoryButton) {
         const isActive =
-            categoryButton.dataset.category === selectedCategory;
+          categoryButton.dataset.category === selectedCategory;
 
         categoryButton.classList.toggle("active", isActive);
-
         categoryButton.setAttribute(
-            "aria-pressed",
-            String(isActive)
+          "aria-pressed",
+          String(isActive)
         );
-    });
+      }
+    );
 
-    // Perbarui kartu menu.
     renderMenu();
-});
-
-
-/* =========================================
-   13. MEMBUKA DETAIL MENU
-   ========================================= */
-
-/*
-  Ketika tombol "Lihat Detail" ditekan,
-  informasi produk dimasukkan ke dialog HTML.
-*/
-
-function openMenuDetail(menuItem) {
-    // Isi gambar.
-    setMenuImage(dialogImage, menuItem);
-
-    // Isi kategori, nama, harga, dan deskripsi.
-    dialogCategory.textContent = menuItem.category;
-    dialogTitle.textContent = menuItem.name;
-    dialogPrice.textContent = formatRupiah(menuItem.price);
-    dialogDescription.textContent = menuItem.description;
-
-    // Tampilkan status ketersediaan.
-    if (menuItem.available) {
-        dialogAvailability.textContent = "Tersedia";
-        dialogAvailability.style.color = "var(--success)";
-    } else {
-        dialogAvailability.textContent = "Maaf, menu sedang habis.";
-        dialogAvailability.style.color = "var(--danger)";
-    }
-
-    // Buka dialog jika belum terbuka.
-    if (!menuDialog.open) {
-        menuDialog.showModal();
-    }
+  });
 }
 
 
-/* =========================================
-   14. MENUTUP DETAIL MENU
-   ========================================= */
+/* 13. DETAIL MENU */
 
-/*
-  Tutup dialog ketika tombol silang ditekan.
-*/
+function openMenuDetail(menuItem) {
+  if (!menuDialog) return;
 
-closeDialogButton.addEventListener("click", function () {
+  activeMenuId = menuItem.id;
+
+  dialogCategory.textContent = menuItem.category;
+  dialogTitle.textContent = menuItem.name;
+  dialogPrice.textContent = formatPrice(menuItem.price);
+  dialogDescription.textContent = menuItem.description;
+
+  dialogAvailability.textContent = menuItem.available
+    ? "✓ Tersedia"
+    : "✕ Stok sedang habis";
+
+  dialogAvailability.style.color = menuItem.available
+    ? "#247b4b"
+    : "#b13e30";
+
+  // Bersihkan foto lama dan listener error sebelumnya.
+  // Gunakan elemen gambar baru agar detail menu tidak
+  // mengumpulkan listener berulang.
+  const newImage = document.createElement("img");
+
+  newImage.id = "dialogImage";
+  newImage.className = "dialog-image";
+  newImage.alt = menuItem.name;
+  newImage.loading = "lazy";
+
+  newImage.addEventListener("error", function () {
+    newImage.alt = "Foto " + menuItem.name + " tidak tersedia";
+    newImage.removeAttribute("src");
+    newImage.classList.add("image-placeholder");
+  }, { once: true });
+
+  if (dialogImage && dialogImage.parentNode) {
+    dialogImage.replaceWith(newImage);
+  }
+
+  // Perbarui referensi gambar yang digunakan selanjutnya.
+  // Referensi variabel const dialogImage di atas tidak bisa
+  // ditimpa, jadi gunakan ID untuk mencari gambar terbaru.
+  newImage.src = menuItem.image;
+
+  if (typeof menuDialog.showModal === "function") {
+    menuDialog.showModal();
+  } else {
+    menuDialog.setAttribute("open", "");
+  }
+}
+
+function closeMenuDetail() {
+  if (!menuDialog) return;
+
+  if (typeof menuDialog.close === "function" && menuDialog.open) {
     menuDialog.close();
-});
+  } else {
+    menuDialog.removeAttribute("open");
+  }
 
+  activeMenuId = null;
+}
 
-/*
-  Tutup dialog ketika pengguna mengeklik
-  area gelap di luar kotak dialog.
-*/
+if (closeDialog) {
+  closeDialog.addEventListener("click", closeMenuDetail);
+}
 
-menuDialog.addEventListener("click", function (event) {
+if (menuDialog) {
+  menuDialog.addEventListener("click", function (event) {
     if (event.target === menuDialog) {
-        menuDialog.close();
+      closeMenuDetail();
     }
+  });
+
+  menuDialog.addEventListener("close", function () {
+    activeMenuId = null;
+  });
+}
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && menuDialog && menuDialog.open) {
+    closeMenuDetail();
+  }
 });
 
 
-/* =========================================
-   15. TAHUN OTOMATIS PADA FOOTER
-   ========================================= */
+/* 14. TAHUN OTOMATIS DI FOOTER */
 
-/*
-  Tahun akan mengikuti tahun pada perangkat
-  sehingga tidak perlu diubah setiap tahun.
-*/
-
-currentYear.textContent = new Date().getFullYear();
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear();
+}
 
 
-/* =========================================
-   16. MENJALANKAN WEBSITE
-   ========================================= */
-
-/*
-  Tampilkan menu ketika halaman selesai dibaca.
-  Tidak ada permintaan database atau API.
-*/
+/* 15. MULAI WEBSITE */
 
 renderMenu();
