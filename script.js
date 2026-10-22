@@ -69,7 +69,7 @@ const menu = [
     category: "Minuman",
     price: 8000,
     description: "Teh manis dingin yang menyegarkan.",
-    image: "es teh.jfif",
+    image: "es teh manis.jfif",
     available: true,
     bestSeller: false
   },
