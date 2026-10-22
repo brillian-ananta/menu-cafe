@@ -29,7 +29,7 @@ const menu = [
     category: "Makanan",
     price: 28000,
     description: "Ayam renyah dengan nasi hangat dan saus spesial.",
-    image: "images/chicken-katsu.jpg",
+    image: "chicken katsu.jfif",
     available: true,
     bestSeller: true
   },
@@ -39,7 +39,7 @@ const menu = [
     category: "Makanan",
     price: 22000,
     description: "Mie goreng dengan bumbu pilihan dan sayuran segar.",
-    image: "images/mie-goreng.jpg",
+    image: "mie goreng.jfif",
     available: true,
     bestSeller: false
   },
@@ -49,7 +49,7 @@ const menu = [
     category: "Camilan",
     price: 15000,
     description: "Kentang goreng renyah yang cocok untuk teman santai.",
-    image: "images/kentang-goreng.jpg",
+    image: "kentang goreng.jfif",
     available: true,
     bestSeller: true
   },
@@ -59,7 +59,7 @@ const menu = [
     category: "Camilan",
     price: 18000,
     description: "Roti panggang hangat dengan isian cokelat manis.",
-    image: "images/roti-bakar.jpg",
+    image: "roti bakar.jfif",
     available: true,
     bestSeller: false
   },
@@ -69,7 +69,7 @@ const menu = [
     category: "Minuman",
     price: 8000,
     description: "Teh manis dingin yang menyegarkan.",
-    image: "images/es-teh.jpg",
+    image: "es teh.jfif",
     available: true,
     bestSeller: false
   },
@@ -79,7 +79,7 @@ const menu = [
     category: "Minuman",
     price: 22000,
     description: "Perpaduan matcha dan susu dengan rasa lembut.",
-    image: "images/matcha-latte.jpg",
+    image: "matcha latte.webp",
     available: true,
     bestSeller: true
   },
@@ -89,7 +89,7 @@ const menu = [
     category: "Kopi",
     price: 18000,
     description: "Kopi, susu, dan es dengan rasa seimbang.",
-    image: "images/es-kopi-susu.jpg",
+    image: "es kopi susu.jfif",
     available: true,
     bestSeller: true
   },
@@ -99,7 +99,7 @@ const menu = [
     category: "Kopi",
     price: 16000,
     description: "Espresso dengan air, cocok untuk pecinta kopi klasik.",
-    image: "images/americano.jpg",
+    image: "americano.jfif",
     available: true,
     bestSeller: false
   },
@@ -109,7 +109,7 @@ const menu = [
     category: "Kopi",
     price: 20000,
     description: "Espresso dengan susu dan busa susu lembut.",
-    image: "images/cappuccino.jpg",
+    image: "cappuccino.jfif",
     available: true,
     bestSeller: false
   }
