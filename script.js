@@ -19,7 +19,7 @@ const menu = [
     category: "Makanan",
     price: 25000,
     description: "Nasi goreng gurih dengan telur, sayuran, dan pelengkap pilihan.",
-    image: "menu cafe/nasi goreng spesial.jpg",
+    image: "menu-cafe/nasi-goreng-spesial.jpg",
     available: true,
     bestSeller: true
   },
